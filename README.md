@@ -7,4 +7,5 @@ Node.js is an open-source, cross-platform JavaScript runtime environment and lib
 3. Verify that Node.js was properly installed by opening the command prompt and typing this command: node --version
 ## Lets Start
 ### Step One
-
+* Create A folder for the project.Initialize the project in a text editor like **VS CODE**
+* Open the terminal and enter ``` npm init ```
