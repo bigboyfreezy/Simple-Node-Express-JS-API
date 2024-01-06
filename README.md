@@ -71,7 +71,7 @@ In the Terminal Add the following dependencies using the following command ``` n
     * **Body-Parser:**
     The body-parser module is used for parsing incoming request bodies. However, in Express version 4.16.0 and above, the express.json() and express.urlencoded() methods are included with Express, making the body-parser package unnecessary for parsing JSON and URL-encoded data.
 
-## Part Three Simple In memory Data Store ( Users.Js)
+## Part Three: Simple In memory Data Store ( Users.Js)
   + Lets create a simple in-memory data store for user information in a Node.js application.
   + Right click and create a file in the main folder called Users.JS. Note The case.
   + We create an array that contains multiple user objects. Each user object represents a user with three properties: "id," "Name," and "Email."
@@ -104,3 +104,38 @@ In the Terminal Add the following dependencies using the following command ``` n
 
   ```
 
+## Part Four: Simple REST API using express.js framework (users.JS)
+* This code defines an Express.js router responsible for handling CRUD (Create, Read, Update, Delete) operations for a collection of users
+1. **Import Dependencies**
+   * Import required modules:
+   * Express for creating the router
+   * uuid for generating unique identifiers
+   * users array (presumably containing user data).
+   * Before writing the code ensure you install uuid from the terminal using ``` npm install --save uuid ```
+  ```
+  const express = require('express');
+  const router = express.Router();
+  const uuid = require('uuid');
+  let users = require('../../Users');
+
+  ```
+2. **Define Route for HTTP GET**
+   * requests to retrieve all users.Responds with the entire users array in JSON format.
+   ```
+    // Filter by Id:
+    router.get('/:id', (req, res) => {
+        const found = users.some((user) => user.id === parseInt(req.params.id));
+        if (found) {
+            res.json(users.filter((user) => user.id === parseInt(req.params.id)));
+        } else {
+            res.json("Not Found");
+        }
+    });
+
+   ```
+   * This route is defined for HTTP GET requests with the path /:id. The :id is a route parameter, and it will capture the value provided in the URL.
+   * It uses the some method to check if at least one user in the users array has the specified ID (req.params.id).parseInt(req.params.id) is used to convert the route parameter id to an integer.
+   * If a user with the specified ID is found (found is true), it responds with a JSON array containing the user(s) matching the ID.
+   * If no user is found, it responds with the string "Not Found."
+     
+3. ****
