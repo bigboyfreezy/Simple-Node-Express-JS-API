@@ -59,15 +59,15 @@ In the Terminal Add the following dependencies using the following command ``` n
    ```
 
    **Additional Info**
-   **Middleware**:
+   * **Middleware**:
     Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application’s request-response cycle.
     express.json() and express.urlencoded() are middleware functions provided by Express to parse incoming requests. express.json() parses incoming JSON payloads, and express.urlencoded() parses incoming URL-encoded form data.
-    **Router Module (./routes/api/users):**
+    * **Router Module (./routes/api/users):**
     This assumes there's a router module for handling API endpoints related to users in the specified path (./routes/api/users). The router module is expected to handle routes like /api/users/....
-    **Listening on Port 3000:**
+    * **Listening on Port 3000:**
     The server is configured to listen on port 3000. You can access the server by navigating to http://localhost:3000 in a web browser.
-    **Logging Message:**
+    * **Logging Message:**
     A simple log message is displayed when the server starts, indicating that it's running on port 3000.
-    **Body-Parser:**
+    * **Body-Parser:**
     The body-parser module is used for parsing incoming request bodies. However, in Express version 4.16.0 and above, the express.json() and express.urlencoded() methods are included with Express, making the body-parser package unnecessary for parsing JSON and URL-encoded data.
 
