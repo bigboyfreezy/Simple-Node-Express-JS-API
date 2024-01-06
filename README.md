@@ -6,12 +6,12 @@ Node.js is an open-source, cross-platform JavaScript runtime environment and lib
 2. Run the Node.js installer. Accept the license agreement. You can leave other settings as default. The installer will install Node.js and prompt you to click on the finish button.
 3. Verify that Node.js was properly installed by opening the command prompt and typing this command: node --version
 ## Lets Start
-### Step One
+## Part One
 * Create A folder for the project.Initialize the project in a text editor like **VS CODE**
 * Open the terminal and enter ``` npm init ``` and press enter and your node js project will be initialized
 * View the package.json file
 * Your entry point will be index.js
-### Step two
+## Part Two Index.JS
 Lets break the code functionality of **Index.JS**
 1. Import Dependancy
 ```
