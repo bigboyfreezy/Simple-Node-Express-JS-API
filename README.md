@@ -37,7 +37,7 @@ In the Terminal Add the following dependencies using the following command ``` n
    app.use(express.urlencoded({ extended: false }));
 
    ```
-  Configure middleware using app.use():
+* Configure middleware using app.use():
   * express.json(): Parses incoming JSON payloads.
   * express.urlencoded({ extended: false }): Parses incoming URL-encoded form data.
   * The { extended: false } option means the values can be of any type (not just strings or arrays).
@@ -70,4 +70,36 @@ In the Terminal Add the following dependencies using the following command ``` n
     A simple log message is displayed when the server starts, indicating that it's running on port 3000.
     * **Body-Parser:**
     The body-parser module is used for parsing incoming request bodies. However, in Express version 4.16.0 and above, the express.json() and express.urlencoded() methods are included with Express, making the body-parser package unnecessary for parsing JSON and URL-encoded data.
+
+## Part Three Simple In memory Data Store ( Users.Js)
+  Lets create a simple in-memory data store for user information in a Node.js application.
+  We create an array that contains multiple user objects. Each user object represents a user with three properties: "id," "Name," and "Email."
+  Then We add **module.export** making it available for use in other parts of your Node.js application. 
+  ```
+  const users = [
+    {
+        "id": 1,
+        "Name": "Yusuf",
+        "Email": "yusuf@gmail.com"
+    },
+    {
+        "id": 2,
+        "Name": "Moha",
+        "Email": "moha@gmail.com"
+    },
+    {
+        "id": 3,
+        "Name": "Jamal",
+        "Email": "jamal@gmail.com"
+    },
+    {
+        "id": 4,
+        "Name": "Chris",
+        "Email": "chris@gmail.com"
+    }
+  ];
+
+  module.exports = users;
+
+  ```
 
