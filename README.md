@@ -25,9 +25,13 @@ Import necessary modules:
 * **body-parser** for parsing incoming request bodies.
 In the Terminal Add the following dependencies using the following command ``` npm install --save express path body-parser ```
 
-2. Create Instance of express application
-   ``` const app = express(); ```
-3. Use Middleware
+2. **Create Instance of express application**
+   
+   ```
+   const app = express();
+   
+   ```
+3. **Use Middleware**
    ```
    app.use(express.json());
    app.use(express.urlencoded({ extended: false }));
@@ -37,14 +41,15 @@ In the Terminal Add the following dependencies using the following command ``` n
   * express.json(): Parses incoming JSON payloads.
   * express.urlencoded({ extended: false }): Parses incoming URL-encoded form data.
   * The { extended: false } option means the values can be of any type (not just strings or arrays).
-4. Define Route For API Endpoint
+    
+4. **Define Route For API Endpoint**
   * Lets Create a folder Named **api** that is going to contain our routes.
   * Inside the folder create our **users** (a router file (users.js))
   ```
   app.use('/api/users', require('./routes/api/users'));
 
   ```
-5. Start The server
+5. **Start The server**
    Start the server on port 3000 and log a message when the server is successfully started.
    ```
     app.listen(3000, () => {
@@ -52,4 +57,17 @@ In the Terminal Add the following dependencies using the following command ``` n
     });
 
    ```
+
+   **Additional Info**
+   **Middleware**:
+    Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application’s request-response cycle.
+    express.json() and express.urlencoded() are middleware functions provided by Express to parse incoming requests. express.json() parses incoming JSON payloads, and express.urlencoded() parses incoming URL-encoded form data.
+    **Router Module (./routes/api/users):**
+    This assumes there's a router module for handling API endpoints related to users in the specified path (./routes/api/users). The router module is expected to handle routes like /api/users/....
+    **Listening on Port 3000:**
+    The server is configured to listen on port 3000. You can access the server by navigating to http://localhost:3000 in a web browser.
+    **Logging Message:**
+    A simple log message is displayed when the server starts, indicating that it's running on port 3000.
+    **Body-Parser:**
+    The body-parser module is used for parsing incoming request bodies. However, in Express version 4.16.0 and above, the express.json() and express.urlencoded() methods are included with Express, making the body-parser package unnecessary for parsing JSON and URL-encoded data.
 
