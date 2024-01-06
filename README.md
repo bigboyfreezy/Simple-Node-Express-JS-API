@@ -23,3 +23,33 @@ Import necessary modules:
 * **express** for creating the web server, 
 * **path** for handling file paths
 * **body-parser** for parsing incoming request bodies.
+In the Terminal Add the following dependencies using the following command ``` npm install --save express path body-parser ```
+
+2. Create Instance of express application
+   ``` const app = express(); ```
+3. Use Middleware
+   ```
+   app.use(express.json());
+   app.use(express.urlencoded({ extended: false }));
+
+   ```
+  Configure middleware using app.use():
+  * express.json(): Parses incoming JSON payloads.
+  * express.urlencoded({ extended: false }): Parses incoming URL-encoded form data.
+  * The { extended: false } option means the values can be of any type (not just strings or arrays).
+4. Define Route For API Endpoint
+  * Lets Create a folder Named **api** that is going to contain our routes.
+  * Inside the folder create our **users** (a router file (users.js))
+  ```
+  app.use('/api/users', require('./routes/api/users'));
+
+  ```
+5. Start The server
+   Start the server on port 3000 and log a message when the server is successfully started.
+   ```
+    app.listen(3000, () => {
+    console.log("Start Server 3000");
+    });
+
+   ```
+
