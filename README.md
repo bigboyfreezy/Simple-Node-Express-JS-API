@@ -19,6 +19,7 @@ Lets break the code functionality of **Index.JS**
   const path = require('path');
   const bodyparser = require('body-parser');
 ```
-Import necessary modules: **express** for creating the web server, 
-**path** for handling file paths
-**body-parser** for parsing incoming request bodies.
+Import necessary modules: 
+* **express** for creating the web server, 
+* **path** for handling file paths
+* **body-parser** for parsing incoming request bodies.
