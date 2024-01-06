@@ -72,9 +72,10 @@ In the Terminal Add the following dependencies using the following command ``` n
     The body-parser module is used for parsing incoming request bodies. However, in Express version 4.16.0 and above, the express.json() and express.urlencoded() methods are included with Express, making the body-parser package unnecessary for parsing JSON and URL-encoded data.
 
 ## Part Three Simple In memory Data Store ( Users.Js)
-  Lets create a simple in-memory data store for user information in a Node.js application.
-  We create an array that contains multiple user objects. Each user object represents a user with three properties: "id," "Name," and "Email."
-  Then We add **module.export** making it available for use in other parts of your Node.js application. 
+  + Lets create a simple in-memory data store for user information in a Node.js application.
+  + Right click and create a file in the main folder called Users.JS. Note The case.
+  + We create an array that contains multiple user objects. Each user object represents a user with three properties: "id," "Name," and "Email."
+  + Then We add **module.export** making it available for use in other parts of your Node.js application. 
   ```
   const users = [
     {
