@@ -119,7 +119,7 @@ In the Terminal Add the following dependencies using the following command ``` n
   let users = require('../../Users');
 
   ```
-2. **Define Route for HTTP GET**
+2. **Define Route for HTTP GET USERS BY ID**
    * requests to retrieve all users.Responds with the entire users array in JSON format.
    ```
     // Filter by Id:
@@ -138,4 +138,73 @@ In the Terminal Add the following dependencies using the following command ``` n
    * If a user with the specified ID is found (found is true), it responds with a JSON array containing the user(s) matching the ID.
    * If no user is found, it responds with the string "Not Found."
      
-3. ****
+3. **ADD USERS**
+   * It creates a new user object with a unique identifier generated using uuid.v4().
+   * The user object includes the Name and Email properties, which are obtained from the request body (req.body).
+   * checks if the Name and Email properties are present in the new user object.
+   * If either of them is missing, it returns a JSON response with the message "Error found."
+   ```
+    router.post('/', (req, res) => {
+    const newUser = {
+        id: uuid.v4(),
+        Name: req.body.Name,
+        Email: req.body.Email
+    };
+
+    if (!newUser.Name || !newUser.Email) {
+        return res.json("Error found");
+    }
+
+    users.push(newUser);
+    res.json("User Added Successfully: " + JSON.stringify(newUser));
+    });
+
+   ```
+4. **UPDATE USERS**
+   * This route is defined for HTTP PUT requests with the path /:id. The :id is a route parameter, capturing the value provided in the URL
+   * It uses the some method to check if at least one user in the users array has the specified ID (req.params.id).
+   * parseInt(req.params.id) is used to convert the route parameter id to an integer.
+   * If a user with the specified ID is found (found is true), it updates the user's information based on the data provided in the request body (req.body).
+   * It responds with a JSON object containing a message indicating the successful update and the updated user.
+   * The ternary operators are used to check if updateUser.name and updateUser.email are provided in the request body. If provided, the user's Name and Email properties are updated; otherwise, the existing            values are retained.
+   ```
+    //update user
+    router.put("/:id", (req, res) => {
+        const found = users.some(user => user.id === parseInt(req.params.id));
+        if (found) {
+            const updateUser = req.body;
+            users.forEach(user => {
+            if (user.id === parseInt(req.params.id)) {
+                user.Name = updateUser.name ? updateUser.name : user.Name;
+                user.Email = updateUser.email ? updateUser.email : user.Email;
+                res.json({ msg: "User updated", user });
+                }
+            });
+      
+        } 
+        else {
+            res.sendStatus(400);
+      
+        }
+      
+      });
+   ```
+5. **DELETE USERS**
+   * If a user with the specified ID is found (found is true), it removes the user from the users array using the filter method.
+   * It responds with a JSON object containing a message indicating the successful deletion and the updated user list.
+   * The updated user list is sent in the response for reference or further processing.
+  ```
+    //Delete User
+  router.delete("/:id", (req, res) => {
+
+    const found = users.some(user => user.id === parseInt(req.params.id))
+    if (found) {
+        users = users.filter(user => user.id !== parseInt(req.params.id))
+        res.json({msg: "User deleted",users});
+    } 
+    else {
+        res.sendStatus(400);
+        }
+    });
+  ```
+   
